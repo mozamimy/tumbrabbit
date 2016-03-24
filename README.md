@@ -1,6 +1,6 @@
 # Tumbrabbit
 
-A Tumblr client designed for rabitts :rabbit2:
+A Tumblr client designed for rabbits :rabbit2:
 
 This software is under heavy development.
 
