@@ -13,9 +13,17 @@ app.on('window-all-closed', function() {
 });
 
 app.on('ready', function() {
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({width: 800, height: 600, webPreferences: { webSecurity: false }});
   mainWindow.loadURL('file://' + __dirname + '/index.html')
   mainWindow.webContents.openDevTools();
+
+  mainWindow.webContents.on('will-navigate', function(preventDefault, url) {
+    var matched;
+    if (matched = url.match(/\?oauth_token=([^&]*)&oauth_verifier=([^&]*)/)) {
+      console.dir(matched);
+    }
+    // preventDefault();
+  });
 
   mainWindow.on('closed', function() {
     mainWindow = null;
